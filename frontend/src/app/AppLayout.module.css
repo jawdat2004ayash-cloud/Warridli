@@ -1,0 +1,154 @@
+.skip {
+  position: absolute;
+  z-index: 100;
+  inset-inline-start: var(--s-3);
+  inset-block-start: -10rem;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--touch);
+  padding: var(--s-2) var(--s-4);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  border-radius: var(--r-md);
+  font-weight: var(--fw-semibold);
+}
+
+.skip:focus {
+  inset-block-start: var(--s-3);
+}
+
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+  background: var(--c-graphite);
+  color: var(--c-ink-inverse);
+  padding-block-start: env(safe-area-inset-top, 0px);
+  /* thin signal rule: the only bright accent in the chrome */
+  border-block-end: 3px solid var(--c-signal-bright);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  max-inline-size: var(--w-content);
+  min-block-size: var(--header-h);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.brand {
+  flex: none;
+  display: inline-flex;
+  min-block-size: var(--touch);
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--r-md);
+}
+
+.tagline {
+  display: none;
+  font-size: var(--fs-sm);
+  color: #c9c5bb;
+}
+
+.nav {
+  min-inline-size: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-inline-start: auto;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--touch);
+  padding-inline: var(--s-3);
+  border: 1px solid #5a5f66;
+  border-radius: var(--r-md);
+  color: var(--c-ink-inverse);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--c-ink-inverse);
+  border-color: var(--c-signal-bright);
+}
+
+.navLink[aria-current='page'] {
+  border-color: var(--c-signal-bright);
+}
+
+.navName {
+  min-inline-size: 0;
+  max-inline-size: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accountLink {
+  min-inline-size: 0;
+}
+
+.navLink > svg {
+  flex: none;
+}
+
+.bell {
+  position: relative;
+  justify-content: center;
+  min-inline-size: var(--touch);
+  padding-inline: var(--s-2);
+}
+
+.bellCount {
+  position: absolute;
+  inset-block-start: -0.4rem;
+  inset-inline-end: -0.4rem;
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 1.25rem;
+  block-size: 1.25rem;
+  padding-inline: 0.25rem;
+  border-radius: 0.625rem;
+  background: var(--c-signal);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1;
+}
+
+/* On small phones keep one action in the header; "new account" is linked from the login page. */
+.navSecondary {
+  display: none;
+  border-color: transparent;
+}
+
+@media (min-width: 37.5rem) {
+  .tagline {
+    display: block;
+  }
+
+  .navSecondary {
+    display: inline-flex;
+  }
+}
+
+.main {
+  max-inline-size: var(--w-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: var(--s-6) var(--s-8);
+}
+
+.main:focus {
+  outline: none;
+}

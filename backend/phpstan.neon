@@ -1,0 +1,12 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 6
+    paths:
+        - app
+        - bootstrap/app.php
+        - config
+        - database
+        - routes
+    # tests/ is excluded: PHPStan cannot resolve Pest's closure-bound $this; Pest itself verifies the tests.

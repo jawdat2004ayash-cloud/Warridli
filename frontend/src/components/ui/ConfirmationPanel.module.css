@@ -1,0 +1,7 @@
+/* Reset native fieldset geometry without overriding the existing page's confirmation styling. */
+:where(.panel) {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

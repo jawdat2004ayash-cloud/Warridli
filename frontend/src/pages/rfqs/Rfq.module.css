@@ -1,0 +1,349 @@
+/* RFQ pages: list rows read like a parts ledger; the form reuses the auth "datasheet" sheet. */
+
+.page {
+  display: grid;
+  gap: var(--s-5);
+  max-inline-size: 48rem;
+  margin-inline: auto;
+}
+
+.pageHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.kicker {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-signal);
+}
+
+.pageTitle {
+  font-size: var(--fs-2xl);
+}
+
+.primaryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--touch);
+  padding-inline: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--c-signal);
+  color: #fff;
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.primaryLink:hover {
+  background: var(--c-signal-hover);
+  color: #fff;
+}
+
+/* List */
+.list {
+  display: grid;
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  position: relative;
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  padding-inline-end: var(--s-7);
+  background: var(--c-surface);
+  border: var(--border);
+  border-inline-start: 3px solid var(--c-graphite);
+  border-radius: var(--r-md);
+  color: var(--c-ink);
+  text-decoration: none;
+  transition: border-color var(--t-fast);
+}
+
+.row:hover {
+  color: var(--c-ink);
+  border-color: var(--c-ink-3);
+  border-inline-start-color: var(--c-signal);
+}
+
+.rowBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.rowTitle {
+  font-weight: var(--fw-semibold);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.rowMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.rowPhotos {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+}
+
+.rowGo {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--s-4);
+  translate: 0 -50%;
+  color: var(--c-ink-3);
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.pagerText {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+/* Form */
+.group {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.groupLabel {
+  padding: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+}
+
+.groupHint {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+
+.optional {
+  font-weight: var(--fw-regular);
+  color: var(--c-ink-3);
+}
+
+.required {
+  color: var(--c-signal);
+}
+
+.error {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-danger);
+}
+
+.quantityRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: start;
+}
+
+.choiceGroup {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.choices {
+  display: grid;
+  gap: var(--s-2);
+}
+
+@media (min-width: 37.5rem) {
+  .choices {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+}
+
+/* Radio cards: the whole card is the label, so the tap target is large. */
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  min-block-size: var(--touch);
+  padding: var(--s-3);
+  background: var(--c-surface);
+  border: var(--border-strong);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: border-color var(--t-fast);
+}
+
+.choice:hover {
+  border-color: var(--c-ink-2);
+}
+
+.choice:has(:checked) {
+  border-color: var(--c-signal);
+  background: var(--c-signal-soft);
+}
+
+.choice:has(:focus-visible) {
+  box-shadow: var(--focus-ring);
+}
+
+.choice[data-unknown] {
+  border-style: dashed;
+}
+
+.choice[data-unknown]:has(:checked) {
+  border-style: solid;
+}
+
+.choiceGroup[aria-invalid] .choice {
+  border-color: var(--c-danger);
+}
+
+.radio {
+  flex: none;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  margin: 0.15rem 0 0;
+  accent-color: var(--c-signal);
+}
+
+.choiceText {
+  display: grid;
+  gap: var(--s-1);
+  justify-items: start;
+}
+
+.choiceLabel {
+  font-weight: var(--fw-semibold);
+}
+
+/* Label text directly inside .choiceText (keeps it within the a11y lint's label depth). */
+.choiceStrong {
+  font-weight: var(--fw-semibold);
+}
+
+.choiceHint {
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.more {
+  border-block-start: var(--border);
+  padding-block-start: var(--s-3);
+}
+
+.moreSummary {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--touch);
+  font-weight: var(--fw-semibold);
+  color: var(--c-ink-2);
+  cursor: pointer;
+}
+
+.more[open] > .moreSummary {
+  margin-block-end: var(--s-3);
+}
+
+/* Detail: wider than the form sheet, so two quotes can be compared side by side on desktop. */
+.detailPage {
+  display: grid;
+  gap: var(--s-4);
+  max-inline-size: 58rem;
+  margin-inline: auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  justify-self: start;
+  min-block-size: var(--touch);
+  font-weight: var(--fw-semibold);
+}
+
+/* The chevron points "forward" (left in RTL); back must point the other way. */
+.backIcon {
+  scale: -1 1;
+}
+
+.detailTitle {
+  font-size: var(--fs-xl);
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.galleryLink {
+  display: block;
+  border-radius: var(--r-md);
+}
+
+.galleryImg {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: var(--border);
+  border-radius: var(--r-md);
+  background: var(--c-surface-sunk);
+}
+
+.quotesSection {
+  display: grid;
+  gap: var(--s-3);
+  padding-block-start: var(--s-2);
+}
+
+.sectionTitle {
+  font-size: var(--fs-lg);
+}
+
+.confirm {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.confirmText {
+  color: var(--c-ink);
+  font-size: var(--fs-md);
+}
+
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}

@@ -1,0 +1,29 @@
+# Instructor source ZIP: tracked source only; retain the two blank credential templates.
+**/.env export-ignore
+**/.env.* export-ignore
+**/.env.example -export-ignore
+**/.env.testing.example -export-ignore
+*.sql export-ignore
+*.sql.* export-ignore
+*.dump export-ignore
+*.dump.* export-ignore
+*.bak export-ignore
+*.backup export-ignore
+*.pem export-ignore
+*.key export-ignore
+*.p12 export-ignore
+*.pfx export-ignore
+auth.json export-ignore
+.npmrc export-ignore
+/backups export-ignore
+/artifacts export-ignore
+/backend/vendor export-ignore
+/frontend/node_modules export-ignore
+/frontend/dist export-ignore
+/frontend/test-results export-ignore
+/frontend/playwright-report export-ignore
+# Generated agent bootstrap files prescribe Boost installation, which this project does not require.
+/backend/AGENTS.md export-ignore
+/backend/CLAUDE.md export-ignore
+/.agents export-ignore
+/.codex export-ignore

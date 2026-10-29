@@ -1,0 +1,40 @@
+# Secrets
+.env
+.env.*
+!.env.example
+!.env.testing.example
+
+# Private backups / credential exports / local handoff archives
+*.sql
+*.sql.*
+*.dump
+*.dump.*
+*.bak
+*.backup
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+.npmrc
+/backups/
+/artifacts/
+
+# Backend (Laravel) — storage/ and bootstrap/cache/ are handled by Laravel's own nested .gitignore files
+backend/vendor/
+backend/storage/*.key
+backend/.phpunit.result.cache
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+Thumbs.db
+.DS_Store
+*.log

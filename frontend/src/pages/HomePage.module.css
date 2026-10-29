@@ -1,0 +1,30 @@
+.home {
+  display: grid;
+  gap: var(--s-4);
+  max-inline-size: 40rem;
+  padding-block: var(--s-6);
+}
+
+.kicker {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-signal);
+}
+
+.title {
+  font-size: clamp(var(--fs-2xl), 6vw, var(--fs-3xl));
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.lead {
+  font-size: var(--fs-lg);
+  color: var(--c-ink-2);
+}

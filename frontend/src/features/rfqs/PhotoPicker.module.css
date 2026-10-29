@@ -1,0 +1,98 @@
+.picker {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+}
+
+.thumb {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: var(--border);
+  border-radius: var(--r-md);
+  background: var(--c-surface-sunk);
+}
+
+.remove {
+  position: absolute;
+  inset-block-start: var(--s-1);
+  inset-inline-end: var(--s-1);
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--touch);
+  block-size: var(--touch);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-md);
+  background: rgb(0 0 0 / 0.65);
+  color: #fff;
+  cursor: pointer;
+}
+
+.remove:hover {
+  background: var(--c-danger);
+}
+
+/* The real <input type=file> is visually hidden inside; the label is the tap target. */
+.add {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-block-size: 4rem;
+  padding: var(--s-3) var(--s-4);
+  border: 2px dashed var(--c-ink-3);
+  border-radius: var(--r-md);
+  background: var(--c-paper);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: border-color var(--t-fast);
+}
+
+.add:hover {
+  border-color: var(--c-signal);
+}
+
+.add:has(:focus-visible) {
+  box-shadow: var(--focus-ring);
+  border-color: var(--c-signal);
+}
+
+.add[data-busy] {
+  cursor: progress;
+  color: var(--c-ink-3);
+}
+
+.count {
+  margin-inline-start: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+
+.status:empty {
+  display: none;
+}
+
+.status {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.error {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-danger);
+}

@@ -1,0 +1,53 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--c-ink);
+}
+
+.inverse {
+  color: var(--c-ink-inverse);
+}
+
+.mark {
+  inline-size: 2rem;
+  block-size: 2rem;
+  flex: none;
+}
+
+.nut {
+  fill: none;
+  stroke: var(--c-signal-bright);
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+
+.wordmark:not(.inverse) .nut {
+  stroke: var(--c-signal);
+}
+
+.bore {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+}
+
+.text {
+  display: grid;
+  line-height: 1;
+}
+
+.name {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0;
+}
+
+.latin {
+  margin-block-start: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
+  opacity: 0.7;
+  text-align: end;
+}

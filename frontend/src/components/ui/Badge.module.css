@@ -1,0 +1,40 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding-block: 0.125rem;
+  padding-inline: var(--s-2);
+  border-radius: var(--r-sm);
+  border: 1px solid currentColor;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.ok { color: var(--c-ok); background: var(--c-ok-soft); }
+.warn { color: var(--c-warn); background: var(--c-warn-soft); }
+.danger { color: var(--c-danger); background: var(--c-danger-soft); }
+.info { color: var(--c-info); background: var(--c-info-soft); }
+.muted { color: var(--c-muted); background: var(--c-muted-soft); border-color: var(--c-line); }
+.signal { color: var(--c-signal); background: var(--c-signal-soft); }
+
+.hazard {
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background: var(--c-graphite);
+  color: var(--c-ink-inverse);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  line-height: 1.6;
+  white-space: nowrap;
+  padding-inline-end: var(--s-2);
+  gap: var(--s-2);
+}
+
+.hazardStripe {
+  inline-size: 0.875rem;
+  background: var(--hazard);
+}

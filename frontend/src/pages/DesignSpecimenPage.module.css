@@ -1,0 +1,268 @@
+/* minmax(0, 1fr): grid items default to min-width:auto, which would let the wide
+   comparison table stretch the page instead of scrolling inside its own container. */
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-7);
+}
+
+.intro {
+  display: grid;
+  gap: var(--s-3);
+  max-inline-size: 44rem;
+}
+
+/* Never letter-space or mono-set Arabic: it breaks letter joining. */
+.kicker {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-signal);
+}
+
+.title {
+  font-size: clamp(var(--fs-2xl), 6vw, var(--fs-3xl));
+}
+
+.lead {
+  font-size: var(--fs-lg);
+  color: var(--c-ink-2);
+}
+
+/* Datasheet section: numbered index + hairline rule */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-4);
+  padding-block-start: var(--s-4);
+  border-block-start: 1px solid var(--c-ink);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  font-size: var(--fs-xl);
+}
+
+.sectionIndex {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-signal);
+}
+
+.note {
+  max-inline-size: 60ch;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.narrow {
+  max-inline-size: 28rem;
+}
+
+.brandRow {
+  display: grid;
+  gap: var(--s-3);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.brandTile {
+  display: grid;
+  place-items: center;
+  min-block-size: 8rem;
+  background: var(--c-surface);
+  border: var(--border);
+  border-radius: var(--r-lg);
+}
+
+.brandTileDark {
+  background: var(--c-graphite);
+  border-color: var(--c-graphite);
+}
+
+.swatches {
+  display: grid;
+  gap: var(--s-2);
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-2);
+  background: var(--c-surface);
+  border: var(--border);
+  border-radius: var(--r-md);
+}
+
+.chip {
+  flex: none;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: var(--r-sm);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+
+.swatchText {
+  display: grid;
+  min-inline-size: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.swatchText code {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+  text-align: end;
+}
+
+.typeScale {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.typeRow {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding-block: var(--s-2);
+  border-block-end: var(--border);
+  line-height: var(--lh-tight);
+}
+
+.typeToken {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+
+.form {
+  display: grid;
+  gap: var(--s-4);
+  max-inline-size: 32rem;
+}
+
+.cardBody {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-3);
+  margin: 0;
+}
+
+.specs dt {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+
+.specs dd {
+  margin: 0;
+  font-weight: var(--fw-medium);
+}
+
+.metaText {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+/* position: relative keeps absolutely-positioned descendants (e.g. .visually-hidden header labels)
+   inside the scroll container; without it they escape and widen the mobile layout viewport. */
+.tableWrap {
+  position: relative;
+  overflow-x: auto;
+  background: var(--c-surface);
+  border: var(--border);
+  border-radius: var(--r-lg);
+}
+
+.table {
+  inline-size: 100%;
+  min-inline-size: 52rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.table th,
+.table td {
+  padding: var(--s-3);
+  text-align: start;
+  vertical-align: middle;
+  border-block-end: var(--border);
+  white-space: nowrap;
+}
+
+.table thead th {
+  background: var(--c-surface-sunk);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--c-ink-2);
+}
+
+.table tbody tr:last-child > * {
+  border-block-end: 0;
+}
+
+/* Supplier column stays visible while scrolling horizontally on phones */
+.table tbody th,
+.table thead th:first-child {
+  position: sticky;
+  inset-inline-start: 0;
+  background: inherit;
+}
+
+.table tbody th {
+  background: var(--c-surface);
+  font-weight: var(--fw-semibold);
+}
+
+.price {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+}
+
+.expired > * {
+  color: var(--c-ink-3);
+}
+
+.expired .price {
+  text-decoration: line-through;
+}
+
+.grid3 {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.healthRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.endpoint {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}

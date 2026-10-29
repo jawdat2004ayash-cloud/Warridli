@@ -1,0 +1,73 @@
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-2);
+  padding: var(--s-6) var(--s-4);
+  text-align: center;
+  border: 1px dashed var(--c-line-strong);
+  border-radius: var(--r-lg);
+  background: var(--c-surface);
+}
+
+.danger {
+  border-style: solid;
+  border-color: var(--c-danger);
+  background: var(--c-danger-soft);
+}
+
+.emptyIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border: var(--border);
+  border-radius: 50%;
+  background: var(--c-paper);
+  color: var(--c-ink-2);
+}
+
+.danger .emptyIcon {
+  color: var(--c-danger);
+  border-color: currentColor;
+  background: var(--c-surface);
+}
+
+.emptyTitle {
+  font-weight: var(--fw-semibold);
+}
+
+.emptyText {
+  max-inline-size: 36ch;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.emptyAction {
+  margin-block-start: var(--s-2);
+}
+
+.skeleton {
+  display: block;
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--c-surface-sunk) 30%, #f6f4ef 50%, var(--c-surface-sunk) 70%) 0 0 / 300% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeletonCard {
+  display: grid;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background: var(--c-surface);
+  border: var(--border);
+  border-radius: var(--r-lg);
+}
+
+.skeletonRow {
+  display: flex;
+  gap: var(--s-2);
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}

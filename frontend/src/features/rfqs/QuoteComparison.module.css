@@ -1,0 +1,239 @@
+/* Quote comparison: one card per supplier, identical fact rows in identical order so the eye can compare
+   down the page (phone) or across the grid (desktop). Price is the largest element; no decoration. */
+
+.comparison {
+  display: grid;
+  gap: var(--s-4);
+  container-type: inline-size;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.count {
+  font-weight: var(--fw-semibold);
+}
+
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.sortSelect {
+  min-block-size: var(--touch);
+  padding-inline: var(--s-3);
+  border: var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  font-size: var(--fs-md);
+}
+
+.sortSelect:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.list {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Side by side only when each card still gets ~23rem (the detail sheet on desktop). */
+@container (min-width: 46rem) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.card {
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--c-surface);
+  border: var(--border-strong);
+  border-inline-start: 4px solid var(--c-graphite);
+  border-radius: var(--r-md);
+}
+
+.card[data-selected] {
+  border-color: var(--c-ok);
+  border-inline-start-color: var(--c-ok);
+}
+
+.card[data-expired] {
+  background: var(--c-surface-sunk);
+}
+
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.supplier {
+  font-size: var(--fs-lg);
+  overflow-wrap: anywhere;
+}
+
+.supplierArea {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.price {
+  display: grid;
+  gap: var(--s-1);
+  padding-block: var(--s-3);
+  border-block: var(--border);
+}
+
+.unitPrice {
+  overflow-wrap: anywhere;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+.per {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  color: var(--c-ink-3);
+}
+
+/* Keep unusually long, permitted prices readable as one number on narrow screens. */
+@container (max-width: 26rem) {
+  .unitPrice[data-long] {
+    font-size: var(--fs-lg);
+  }
+}
+
+.unitPrice :global(.num) {
+  white-space: nowrap;
+}
+
+.total {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-2);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3) var(--s-4);
+  margin: 0;
+}
+
+.facts div {
+  display: grid;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.facts .wide {
+  grid-column: 1 / -1;
+}
+
+.facts dt {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-3);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: var(--fw-medium);
+  overflow-wrap: anywhere;
+}
+
+.notes {
+  white-space: pre-line;
+  font-weight: var(--fw-regular);
+}
+
+.actions {
+  display: grid;
+  gap: var(--s-3);
+  padding-block-start: var(--s-3);
+  border-block-start: var(--border);
+}
+
+.contact {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.contactPhone {
+  font-size: var(--fs-md);
+}
+
+/* WhatsApp's own green would clash with the palette; the icon carries the recognition. */
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-block-size: var(--touch);
+  padding-inline: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--c-graphite);
+  color: var(--c-ink-inverse);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.whatsapp:hover {
+  color: var(--c-ink-inverse);
+  background: var(--c-ink);
+}
+
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+
+.error {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-danger);
+}
+
+.confirm {
+  display: grid;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-paper);
+}
+
+.confirmText {
+  font-size: var(--fs-md);
+}
+
+.confirmActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}

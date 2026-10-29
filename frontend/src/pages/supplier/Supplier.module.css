@@ -1,0 +1,59 @@
+/* Supplier pages reuse the RFQ ledger rows and datasheet sheet; only tabs and the quote area are new. */
+
+.tabs {
+  display: flex;
+  gap: var(--s-1);
+  border-block-end: var(--border-strong);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--touch);
+  padding-inline: var(--s-4);
+  margin-block-end: -1px;
+  border-block-end: 3px solid transparent;
+  color: var(--c-ink-2);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.tab:hover {
+  color: var(--c-ink);
+}
+
+.tab[aria-current='page'] {
+  color: var(--c-ink);
+  border-block-end-color: var(--c-signal);
+}
+
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--touch);
+  padding-inline: var(--s-4);
+  border: var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+}
+
+.secondaryLink:hover {
+  color: var(--c-ink);
+  border-color: var(--c-ink-2);
+}
+
+/* The quote is the supplier's main task: give it the full sheet width and room. */
+.quoteArea {
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+}
+
+.preLine {
+  white-space: pre-line;
+}

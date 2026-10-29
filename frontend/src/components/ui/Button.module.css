@@ -1,0 +1,92 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-block-size: var(--touch);
+  padding-block: var(--s-2);
+  padding-inline: var(--s-4);
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.button[aria-busy='true'] {
+  opacity: 0.8;
+  cursor: progress;
+}
+
+/* Primary = the one action that moves a procurement forward (send request, submit quote) */
+.primary {
+  background: var(--c-signal);
+  color: #fff;
+}
+.primary:hover:not(:disabled) {
+  background: var(--c-signal-hover);
+}
+
+.secondary {
+  background: var(--c-surface);
+  border-color: var(--c-line-strong);
+  color: var(--c-ink);
+}
+.secondary:hover:not(:disabled) {
+  border-color: var(--c-ink);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--c-ink-2);
+}
+.ghost:hover:not(:disabled) {
+  background: var(--c-surface-sunk);
+  color: var(--c-ink);
+}
+
+.danger {
+  background: var(--c-surface);
+  border-color: var(--c-danger);
+  color: var(--c-danger);
+}
+.danger:hover:not(:disabled) {
+  background: var(--c-danger-soft);
+}
+
+.md {
+  font-size: var(--fs-md);
+}
+
+.lg {
+  min-block-size: 3.25rem;
+  padding-inline: var(--s-5);
+  font-size: var(--fs-lg);
+}
+
+.block {
+  inline-size: 100%;
+}
+
+.spinner {
+  inline-size: 1em;
+  block-size: 1em;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

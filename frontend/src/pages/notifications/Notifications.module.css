@@ -1,0 +1,65 @@
+/* Notification rows reuse the RFQ ledger look; unread ones carry the signal rule and a dot. */
+
+.lead {
+  color: var(--c-ink-2);
+}
+
+.item {
+  position: relative;
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  padding-inline-end: var(--s-7);
+  background: var(--c-surface);
+  border: var(--border);
+  border-inline-start: 3px solid var(--c-line-strong);
+  border-radius: var(--r-md);
+  color: var(--c-ink-2);
+  text-decoration: none;
+}
+
+.item[data-unread] {
+  border-inline-start-color: var(--c-signal);
+  color: var(--c-ink);
+}
+
+a.item:hover {
+  color: var(--c-ink);
+  border-color: var(--c-ink-3);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.dot {
+  flex: none;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 50%;
+  background: var(--c-signal);
+}
+
+.title {
+  font-weight: var(--fw-semibold);
+}
+
+.item[data-unread] .title {
+  font-weight: var(--fw-bold);
+}
+
+.text {
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.time {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}

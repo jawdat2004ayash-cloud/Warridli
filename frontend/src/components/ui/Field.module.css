@@ -1,0 +1,91 @@
+.field {
+  display: grid;
+  gap: var(--s-1);
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-ink);
+}
+
+.required {
+  color: var(--c-signal);
+}
+
+.optional {
+  font-weight: var(--fw-regular);
+  color: var(--c-ink-3);
+}
+
+.control {
+  inline-size: 100%;
+  min-block-size: var(--touch);
+  padding-block: var(--s-2);
+  padding-inline: var(--s-3);
+  background: var(--c-surface);
+  border: var(--border-strong);
+  border-radius: var(--r-md);
+  font-size: var(--fs-md); /* ≥16px prevents iOS zoom on focus */
+  line-height: 1.5;
+  transition: border-color var(--t-fast);
+}
+
+.control::placeholder {
+  color: var(--c-ink-3);
+  opacity: 1;
+}
+
+.control:hover {
+  border-color: var(--c-ink-2);
+}
+
+.control:focus-visible {
+  border-color: var(--c-signal);
+}
+
+.control:disabled {
+  background: var(--c-surface-sunk);
+  color: var(--c-ink-3);
+}
+
+/* Latin-script machine values (part numbers, phone) inside an RTL form */
+.control[dir='ltr'] {
+  font-family: var(--font-mono);
+  text-align: start;
+}
+
+.textarea {
+  resize: vertical;
+  min-block-size: 6rem;
+}
+
+.select {
+  appearance: none;
+  padding-inline-end: var(--s-6);
+  background-image: linear-gradient(45deg, transparent 50%, var(--c-ink-2) 50%),
+    linear-gradient(-45deg, transparent 50%, var(--c-ink-2) 50%);
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  background-position: left 1rem center, left calc(1rem + 5px) center;
+}
+
+[dir='ltr'] .select {
+  background-position: right calc(1rem + 5px) center, right 1rem center;
+}
+
+.field[data-invalid] .control {
+  border-color: var(--c-danger);
+  border-inline-start-width: 3px;
+}
+
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-3);
+}
+
+.error {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--c-danger);
+}

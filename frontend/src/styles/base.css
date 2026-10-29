@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  --dir-flip: -1; /* app is RTL: mirror directional icons */
+  /* Anchor jumps, skip link and keyboard focus must land below the sticky header (height + 3px rule). */
+  scroll-padding-block-start: calc(var(--header-h) + 3px + env(safe-area-inset-top, 0px) + var(--s-3));
+}
+
+[dir='ltr'] {
+  --dir-flip: 1;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvh;
+  background: var(--c-paper);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+  font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+}
+
+p {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--c-signal);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--c-signal-hover);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+::selection {
+  background: var(--c-signal-soft);
+  color: var(--c-ink);
+}
+
+/* Machine-readable values: part numbers, prices, quantities */
+.num,
+code,
+kbd {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Forced-colour modes remove box shadows and gradient arrows. Keep native affordances and focus. */
+@media (forced-colors: active) {
+  :focus-visible,
+  label:has(:focus-visible) {
+    outline: 2px solid Highlight !important;
+    outline-offset: 3px;
+  }
+
+  select {
+    appearance: auto !important;
+    background-image: none !important;
+  }
+}
